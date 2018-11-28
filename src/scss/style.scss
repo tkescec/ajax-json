@@ -1,0 +1,40 @@
+/*####### MAIN STYLES ######*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import 'base/variables.scss';
+@import 'base/mixins.scss';
+
+*, *:before, *:after{
+  box-sizing: $box-sizing;
+}
+
+html{
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+}
+
+body {
+    margin: 0;
+    background: $light;
+
+    .content{
+        width: 800px;
+        margin: auto;
+        text-align: center;
+    }
+    .clock{
+        font-size: 100px;
+    }
+}
+
+
+
+
+
+
+
+
+
+    
+
+
+
