@@ -4,12 +4,15 @@ var handleContent = function () {
 
     $('.btn').click(function (e) {
         e.preventDefault();
-
+        var btn = $(this);
+        $('.users tbody').empty();
         $.ajax({
             url: "data/users.json",
             type: "GET",
             data: { "id": 1 },
             beforeSend: function () {
+                //btn.unbind('click');
+                //btn.prop('disabled', 'disabled');
                 preloader.empty();
                 preloader.append(ajaxLoader);
             },
@@ -17,6 +20,18 @@ var handleContent = function () {
                 /* Ponkad je potrebno parsirati JSON koji dobijete u rezultatu u js objekt */
                 //var users = $.parseJSON(result);
                 
+                $.each(result, function(key, value){
+                    var html = '';
+                    html += '<tr>';
+                    html += '<td>' + value.id + '</td>';
+                    html += '<td>' + value.name + '</td>';
+                    html += '<td>' + value.username + '</td>';
+                    html += '<td>' + value.email + '</td>';
+                    html += '</tr>';
+
+                    $('.users tbody').append(html);
+                });
+                console.log($(btn));
             },
             error: function (xhr, status, error) {
                 if (error){
